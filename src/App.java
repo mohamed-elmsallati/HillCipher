@@ -4,6 +4,7 @@ public class App {
     public static void main(String[] args) {
         Scanner Console_Scanner = new Scanner(System.in);
 
+
         System.out.println("======================================================");
         System.out.println("welcome to the Hill Cipher Encryption and Decryption :");
 
@@ -120,8 +121,8 @@ public class App {
 
     public static int[][] inverseMatrix(int[][] matrix) {
         int matrixSize = matrix.length;
-        int[][] adjoint = new int[matrixSize][matrixSize];
-        int[][] inverse = new int[matrixSize][matrixSize];
+        int[][] adjoint = new int[matrixSize][matrix[0].length];
+        int[][] inverse = new int[matrixSize][matrix[0].length];
         int determinant = determinant(matrix, matrixSize);
 
         if (determinant == 0) {
@@ -134,7 +135,7 @@ public class App {
         adjoint(matrix, adjoint);
 
         for (int i = 0; i < matrixSize; i++) {
-            for (int j = 0; j < matrixSize; j++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 inverse[i][j] = (adjoint[i][j] * determinantInverse) % 26;
                 if (inverse[i][j] < 0) {
                     inverse[i][j] += 26;
@@ -167,7 +168,7 @@ public class App {
         }
     }
 
-    public static void getCofactor(int[][] matrix, int[][] temp, int p, int q, int matrixSize) {  // exlpain this
+    public static void getCofactor(int[][] matrix, int[][] temp, int p, int q, int matrixSize) { 
         int i = 0, j = 0;
 
         for (int row = 0; row < matrixSize; row++) {
